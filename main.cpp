@@ -17,26 +17,22 @@ int main() {
     pinMode(TIRETTE_GPIO, INPUT);
 
     pullUpDnControl(TIRETTE_GPIO, PUD_UP);
-    // bool* tiretteState = new bool(true);
+    bool* tiretteState = new bool(true);
 
-    // MyClient client(tiretteState, "127.0.0.1", 8080);
+    MyClient client(tiretteState, "127.0.0.1", 8080);
 
-    // client.start();
+    client.start();
 
     // Boucle principale
     while (true) {
-        // Lecture de l'état du GPIO de la tirette
         int etat = digitalRead(TIRETTE_GPIO);
 
-        // Si les aimants ne sont plus en contact, afficher un message
         if (etat == LOW) {
-            // tiretteState = new bool(false);
-            std::cout << "Les aimants ne sont plus en contact." << std::endl;
-            // client.sendMessage("tirette;start;set tirette_state;1");
-            // Vous pouvez exécuter d'autres actions ici
+            std::cout << "Les aimants sont en contact." << std::endl;
+            client.sendMessage("tirette;start;set tirette_state;1");
         } else
         {
-            std::cout << "Les aimants sont en contact." << std::endl;
+            std::cout << "Les aimants ne sont pas en contact." << std::endl;
         }
 
         // Attendre un court délai avant de vérifier à nouveau
