@@ -6,7 +6,7 @@
 // Numéro du GPIO connecté à la tirette
 #define TIRETTE_GPIO 17
 
-int main() {
+int main(int argc, char* argv[]) {
     // Initialisation de WiringPi
     if (wiringPiSetupGpio() == -1) {
         std::cerr << "Erreur lors de l'initialisation de WiringPi." << std::endl;
@@ -18,7 +18,13 @@ int main() {
 
     pullUpDnControl(TIRETTE_GPIO, PUD_UP);
 
-    MyClient client("127.0.0.1", 8080);
+    int port = 8080;
+    if (argc == 2)
+    {
+        port = std::stoi(argv[1]);
+    }
+
+    MyClient client("127.0.0.1", port);
 
     client.setTiretteState(true);
 
