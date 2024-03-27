@@ -41,7 +41,7 @@ int main() {
 
         // Attendre un court délai avant de vérifier à nouveau
         lastEtat = etat;
-        delay(100);
+        delay(50);
     }
 
     return 0;
