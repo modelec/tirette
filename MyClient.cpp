@@ -8,16 +8,16 @@ MyClient::MyClient(const char* host, int port) : TCPClient(host, port), tiretteS
 
 void MyClient::handleMessage(const std::string& message)
 {
-    std::string action = split(message, ";")[1];
+    std::vector<std::string> messageSplited = split(message, ";");
     // if get tirette => send tiretteState
-    if (action == "tirette") {
-        if (split(message, ";")[2] == "get tirette_state") {
+    if (messageSplited[1] == "tirette")
+    {
+        if (messageSplited[2] == "get tirette_state") {
             const std::string toSend = "tirette;start;set tirette_state;" + std::to_string(tiretteState);
             this->sendMessage(toSend.c_str());
+        } else if (messageSplited[2] == "ping") {
+            this->sendMessage("tirette;strat;pong;1");
         }
-    } else if (action == "ping")
-    {
-        this->sendMessage("tirette;strat;pong;1");
     }
 }
 
