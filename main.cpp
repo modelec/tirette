@@ -35,7 +35,7 @@ int main() {
         {
             client.setTiretteState(false);
             if (lastEtat != etat) {
-                client.sendMessage("tirette;strat;set tirette_state;0");
+                client.sendMessage("tirette;strat;set state;0");
             }
         }
 

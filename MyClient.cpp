@@ -12,8 +12,8 @@ void MyClient::handleMessage(const std::string& message)
     // if get tirette => send tiretteState
     if (messageSplited[1] == "tirette")
     {
-        if (messageSplited[2] == "get tirette_state") {
-            const std::string toSend = "tirette;start;set tirette_state;" + std::to_string(tiretteState);
+        if (messageSplited[2] == "get state") {
+            const std::string toSend = "tirette;start;set state;" + std::to_string(tiretteState);
             this->sendMessage(toSend.c_str());
         } else if (messageSplited[2] == "ping") {
             this->sendMessage("tirette;strat;pong;1");
