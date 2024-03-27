@@ -1,6 +1,6 @@
 #include "MyClient.h"
 
-MyClient::MyClient(bool* tiretteState, const char* host, int port) : TCPClient(host, port), tiretteState(tiretteState)
+MyClient::MyClient(const char* host, int port) : TCPClient(host, port), tiretteState(false)
 {
 
 }
@@ -17,7 +17,7 @@ void MyClient::handleMessage(const std::string& message)
     }
 }
 
-void MyClient::setTiretteState(bool* tiretteState)
+void MyClient::setTiretteState(bool tiretteState)
 {
     this->tiretteState = tiretteState;
 }

@@ -6,11 +6,11 @@
 class MyClient : public TCPClient {
 
 public:
-    MyClient(bool* tiretteState, const char* host, int port);
+    MyClient(const char* host, int port);
 
     void handleMessage(const std::string& message) override;
 
-    void setTiretteState(bool* tiretteState);
+    void setTiretteState(bool tiretteState);
 private:
-    bool* tiretteState;
+    bool tiretteState;
 };
