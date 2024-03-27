@@ -20,7 +20,7 @@ int main() {
 
     MyClient client("127.0.0.1", 8080);
 
-    client.setTiretteState(tiretteState);
+    client.setTiretteState(true);
 
     client.start();
 
