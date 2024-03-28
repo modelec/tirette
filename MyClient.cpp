@@ -9,7 +9,7 @@ MyClient::MyClient(const char* host, int port) : TCPClient(host, port), tiretteS
 void MyClient::handleMessage(const std::string& message)
 {
     std::cout << "Message received : " << message << std::endl;
-    std::vector<std::string> messageSplited = split(message, ";");
+    std::vector<std::string> messageSplited = TCPSocket::split(message, ";");
     // if get tirette => send tiretteState
     if (messageSplited[1] == "tirette")
     {
@@ -17,7 +17,7 @@ void MyClient::handleMessage(const std::string& message)
             const std::string toSend = "tirette;start;set state;" + std::to_string(tiretteState);
             this->sendMessage(toSend.c_str());
         } else if (messageSplited[2] == "ping") {
-            this->sendMessage("tirette;strat;pong;1");
+            this->sendMessage("tirette;ihm;pong;1");
         }
     }
 }
