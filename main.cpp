@@ -30,6 +30,8 @@ int main(int argc, char* argv[]) {
 
     client.start();
 
+    client.sendMessage("tirette;strat;ready;1");
+
     int lastEtat = digitalRead(TIRETTE_GPIO);
     // Boucle principale
     while (true) {
@@ -41,6 +43,7 @@ int main(int argc, char* argv[]) {
         {
             client.setTiretteState(false);
             if (lastEtat != etat) {
+                std::cout << "LETSGO" << std::endl;
                 client.sendMessage("tirette;strat;set state;0");
             }
         }
