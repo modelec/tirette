@@ -11,7 +11,7 @@ void MyClient::handleMessage(const std::string& message)
     std::cout << "Message received : " << message << std::endl;
     std::vector<std::string> messageSplited = TCPSocket::split(message, ";");
     // if get tirette => send tiretteState
-    if (messageSplited[1] == "tirette")
+    if (messageSplited[1] == "tirette" || messageSplited[1] == "all")
     {
         if (messageSplited[2] == "get state") {
             const std::string toSend = "tirette;start;set state;" + std::to_string(tiretteState);
