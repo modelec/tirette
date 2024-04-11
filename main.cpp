@@ -43,7 +43,7 @@ int main(int argc, char* argv[]) {
         {
             client.setTiretteState(false);
             if (lastEtat != etat) {
-                std::cout << "LETSGO" << std::endl;
+                // std::cout << "LETSGO" << std::endl;
                 client.sendMessage("tirette;strat;set state;0");
             }
         }
