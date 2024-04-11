@@ -34,7 +34,7 @@ int main(int argc, char* argv[]) {
 
     int lastEtat = digitalRead(TIRETTE_GPIO);
     // Boucle principale
-    while (true) {
+    while (!client.shouldStop()) {
         int etat = digitalRead(TIRETTE_GPIO);
 
         if (etat == LOW) {
