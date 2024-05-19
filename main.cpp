@@ -3,6 +3,8 @@
 #include <atomic>
 #include <csignal>
 
+#include <Modelec/CLParser.h>
+
 #include "MyClient.h"
 
 // Numéro du GPIO connecté à la tirette
@@ -28,11 +30,9 @@ int main(int argc, char* argv[]) {
 
     pullUpDnControl(TIRETTE_GPIO, PUD_UP);
 
-    int port = 8080;
-    if (argc == 2)
-    {
-        port = std::stoi(argv[1]);
-    }
+    CLParser clParser(argc, argv);
+
+    int port = std::stoi(clParser.getOption("port", "8080"));
 
     MyClient client("127.0.0.1", port);
 
