@@ -9,7 +9,7 @@ MyClient::MyClient(const char* host, int port) : TCPClient(host, port), tiretteS
 void MyClient::handleMessage(const std::string& message)
 {
     std::cout << "Message received : " << message << std::endl;
-    std::vector<std::string> messageSplited = TCPSocket::split(message, ";");
+    std::vector<std::string> messageSplited = Modelec::split(message, ";");
     // if get tirette => send tiretteState
     if (messageSplited[1] == "tirette" || messageSplited[1] == "all")
     {
