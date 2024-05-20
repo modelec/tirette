@@ -32,7 +32,7 @@ int main(int argc, char* argv[]) {
 
     CLParser clParser(argc, argv);
 
-    int port = std::stoi(clParser.getOption("port", "8080"));
+    int port = clParser.getOption<int>("port", 8080);
 
     MyClient client("127.0.0.1", port);
 
