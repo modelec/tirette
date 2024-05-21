@@ -34,7 +34,9 @@ int main(int argc, char* argv[]) {
 
     int port = clParser.getOption<int>("port", 8080);
 
-    MyClient client("127.0.0.1", port);
+    auto host = clParser.getOption("host", "127.0.0.1");
+
+    MyClient client(host, port);
 
     client.setTiretteState(true);
 
