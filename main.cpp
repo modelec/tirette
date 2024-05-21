@@ -47,13 +47,12 @@ int main(int argc, char* argv[]) {
 
         int lastEtat = digitalRead(TIRETTE_GPIO);
         // Boucle principale
-        while (!client.shouldStop()) {
+        while (!client.shouldStop() && !shouldStop) {
             int etat = digitalRead(TIRETTE_GPIO);
 
             if (etat == LOW) {
                 client.setTiretteState(true);
-            } else
-            {
+            } else {
                 client.setTiretteState(false);
                 if (lastEtat != etat) {
                     // std::cout << "LETSGO" << std::endl;
